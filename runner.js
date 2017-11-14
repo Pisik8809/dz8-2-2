@@ -20,25 +20,48 @@ arr = [
   q, w, e, r, t, y, u, i, o, p, a, s, d, f, g, h, j, k, l, z, x, c, v, b, n, m, q, w1, e1, r1, t1, y1, u1, i1, o1, p1, a1, s1, d1, f1, g1, h1, j1, k1, l1, z1, x1, c1, v1, b1,
   n1, m1, q2, w2, e2, r2, t2, y2, u2, i2, o2, p2, a2, s2, d2, f2, g2, h2, j2, k2, l2, z2, x2, c2, v2, b2, n2, m2, q3, w3
 ];
-console.log(q2.answer);
 var targetCell = document.getElementById('question');
 var user1 = document.getElementsByClassName('runner1')[0];
-var pos1 = 76, pos2 = 152, pos3 = 228, pos4 = 304, pos5 = 380, pos6 = 456, pos7 = 532, pos8 = 608, pos9 = 684, pos10 = 760;
+var user1Coord = user1.offsetLeft;
+//var pos1 = 76, pos2 = 152, pos3 = 228, pos4 = 304, pos5 = 380, pos6 = 456, pos7 = 532, pos8 = 608, pos9 = 684, pos10 = 760;
 function checkUser() {
 var min = 0;
 var max = arr.length - 1;
 var rand = min + Math.floor(Math.random() * (max + 1 - min));
 targetCell.innerHTML = 'Cколько будет: ' + arr[rand].question +' ?';
-/*setTimeout(function() {
+setTimeout(function() {
 var userAnswer = +prompt('Ваш ответ на пример:');
 if(userAnswer == arr[rand].answer) {
- user1.style.left = pos5 + 'px';
- console.log(user1.style.left);
+user1Coord += 76;
+user1.style.left = user1Coord + 'px';
+if(user1.offsetLeft > 759) {
+  alert('Ты победил!');
+}
 }
 else {
-  alert('Ответ неверный!')
+  targetCell.innerHTML = 'Ответ неверный!';
 }
 }, 4000);
 };
-setInterval(checkUser, 10000);*/
+setInterval(checkUser, 8000);
+var runner1 = document.getElementsByClassName('runner2')[0];
+function runnerComp() {
+  runner1.style.transitionProperty = 'left';
+  runner1.style.transitionDuration = '120s';
+  runner1.style.transitionTimingFunction = 'linear';
+  runner1.style.left = '21px';
+}
+function runnerComp1() {
+  runner1.style.left = '760px';
+  console.log(runner1.style.left);
+}
+setTimeout(runnerComp, 9000);
+setTimeout(runnerComp1, 10000);
+function checkCoord() {
+  console.log(runner1.offsetLeft);
+  if(runner1.offsetLeft > 759) {
+    alert('Ты проиграл!');
+  }
+}
+setInterval(checkCoord, 2000);
 }
