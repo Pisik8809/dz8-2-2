@@ -29,7 +29,7 @@ body {
 
 .runner2 {
   width: 57px;
-  background-image: url(бегун2-1.gif);
+  background-image: url(toprunner.gif);
   background-size: contain;
   top: 0;
   left: 20px;
@@ -50,7 +50,12 @@ body {
   height: 40px;
 }
 
-#test {
-  display: block;
+.winner1, .winner2 {
   margin: 0 auto;
+  width: 560px;
+  height: 180px;
+  background-color: red;
+  color: white;
+  font-size: 36px;
+  display: none;
 }

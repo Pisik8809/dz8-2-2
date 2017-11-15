@@ -20,10 +20,11 @@ arr = [
   q, w, e, r, t, y, u, i, o, p, a, s, d, f, g, h, j, k, l, z, x, c, v, b, n, m, q, w1, e1, r1, t1, y1, u1, i1, o1, p1, a1, s1, d1, f1, g1, h1, j1, k1, l1, z1, x1, c1, v1, b1,
   n1, m1, q2, w2, e2, r2, t2, y2, u2, i2, o2, p2, a2, s2, d2, f2, g2, h2, j2, k2, l2, z2, x2, c2, v2, b2, n2, m2, q3, w3
 ];
-var targetCell = document.getElementById('question');
-var user1 = document.getElementsByClassName('runner1')[0];
-var user1Coord = user1.offsetLeft;
-//var pos1 = 76, pos2 = 152, pos3 = 228, pos4 = 304, pos5 = 380, pos6 = 456, pos7 = 532, pos8 = 608, pos9 = 684, pos10 = 760;
+var targetCell = document.getElementById('question'),
+user1 = document.getElementsByClassName('runner1')[0],
+winner1 = document.getElementsByClassName('winner1')[0],
+winner2 = document.getElementsByClassName('winner2')[0],
+user1Coord = user1.offsetLeft;
 function checkUser() {
 var min = 0;
 var max = arr.length - 1;
@@ -35,32 +36,38 @@ if(userAnswer == arr[rand].answer) {
 user1Coord += 76;
 user1.style.left = user1Coord + 'px';
 if(user1.offsetLeft > 759) {
-  alert('Ты победил!');
+  winner1.style.display = 'block';
+  setTimeout(function () {
+ window.location.href = 'https://www.google.com.ua/search?q=%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjKo5PDv8HXAhVlMZoKHQjnBE0Q_AUICigB&biw=1269&bih=614#imgrc=UbWy6qM3AvRDnM:';
+  }, 2000);
 }
 }
 else {
   targetCell.innerHTML = 'Ответ неверный!';
 }
-}, 4000);
+}, 2500);
 };
-setInterval(checkUser, 8000);
+setInterval(checkUser, 7000);
 var runner1 = document.getElementsByClassName('runner2')[0];
 function runnerComp() {
   runner1.style.transitionProperty = 'left';
-  runner1.style.transitionDuration = '120s';
+  runner1.style.transitionDuration = '110s';
   runner1.style.transitionTimingFunction = 'linear';
   runner1.style.left = '21px';
 }
 function runnerComp1() {
   runner1.style.left = '760px';
-  console.log(runner1.style.left);
+  //console.log(runner1.style.left);
 }
 setTimeout(runnerComp, 9000);
 setTimeout(runnerComp1, 10000);
 function checkCoord() {
   console.log(runner1.offsetLeft);
-  if(runner1.offsetLeft > 759) {
-    alert('Ты проиграл!');
+  if(runner1.offsetLeft > 703) {
+winner2.style.display = 'block';
+setTimeout(function () {
+window.location.href = 'https://www.google.com.ua/search?biw=1269&bih=614&tbm=isch&sa=1&ei=Da8MWpDlE4qn6ATG4pOADw&q=%D0%BB%D1%83%D0%B7%D0%B5%D1%80&oq=%D0%BB%D1%83%D0%B7%D0%B5%D1%80&gs_l=psy-ab.3...4199.7993.0.10648.15.11.4.0.0.0.107.818.9j1.11.0....0...1.1.64.psy-ab..0.11.625.0..0j0i10k1j0i30k1j0i67k1.64.LOxJwOt_8V0#imgrc=zBXEpCGQt0SfZM:';
+  }, 2000);
   }
 }
 setInterval(checkCoord, 2000);
